@@ -97,6 +97,10 @@ textarea,
 select {
   font: inherit;
 }
+input{
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
