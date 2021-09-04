@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import logo from "../image/logo.svg";
+import { fadeIn } from "../animations";
 
 // Redux and Routes
 import { fetchSearch } from "../actions/gamesAction";
+import { setAlert } from "../actions/alertAction";
 import { useDispatch } from "react-redux";
 
 const Nav = () => {
@@ -28,7 +30,7 @@ const Nav = () => {
   };
 
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={clearSearched}>
         <img src={logo} alt="logo" />
         <h1>Ignite</h1>

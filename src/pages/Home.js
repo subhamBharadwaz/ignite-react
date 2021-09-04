@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+
+// Redux
 import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
 
 // Styling and Animation
 import styled from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { fadeIn } from "../animations";
 
 // Components
 import Game from "../components/Game";
@@ -33,7 +36,7 @@ const Home = () => {
       {loading ? (
         <HomeSpinner />
       ) : (
-        <GameList>
+        <GameList variants={fadeIn} initial="hidden" animate="show">
           <AnimateSharedLayout type="crossfade">
             <AnimatePresence>
               {pathId && <GameDetail pathId={pathId} />}
@@ -104,7 +107,7 @@ const Home = () => {
 };
 
 const GameList = styled(motion.div)`
-  padding: 0 5rem;
+  padding: 0 5rem 5rem;
   h2 {
     padding: 5rem 0;
   }

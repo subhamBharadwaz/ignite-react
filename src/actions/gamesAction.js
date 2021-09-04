@@ -5,6 +5,7 @@ import {
   upcomingGamesURL,
   searchGameURL,
 } from "../api";
+import { setAlert } from "./alertAction";
 
 // Action Creator
 
@@ -28,11 +29,15 @@ export const loadGames = () => async (dispatch) => {
 };
 
 export const fetchSearch = (game_name) => async (dispatch) => {
-  const searchGames = await axios.get(searchGameURL(game_name));
-  dispatch({
-    type: "FETCH_SEARCHED",
-    payload: {
-      searched: searchGames.data.results,
-    },
-  });
+  try {
+    const searchGames = await axios.get(searchGameURL(game_name));
+    dispatch({
+      type: "FETCH_SEARCHED",
+      payload: {
+        searched: searchGames.data.results,
+      },
+    });
+  } catch (error) {
+    dispatch(setAlert(error.message, "danger"));
+  }
 };
