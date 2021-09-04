@@ -10,6 +10,9 @@ import { useHistory } from "react-router-dom";
 
 import { DetailSpinner } from "../components/Spinner";
 
+// util
+import { smallImage } from "../util";
+
 const GameDetail = () => {
   const history = useHistory();
 
@@ -45,14 +48,21 @@ const GameDetail = () => {
               </Info>
             </Stats>
             <Media>
-              <img src={game.background_image} alt={game.name_original} />
+              <img
+                src={smallImage(game.background_image, 1280)}
+                alt={game.name_original}
+              />
             </Media>
             <Description>
               <p>{game.description_raw}</p>
             </Description>
             <div className="gallery">
               {screen.results.map((screen) => (
-                <img src={screen.image} key={screen.id} alt="game" />
+                <img
+                  src={smallImage(screen.image, 1280)}
+                  key={screen.id}
+                  alt="game"
+                />
               ))}
             </div>
           </>
