@@ -13,7 +13,7 @@ import { DetailSpinner } from "../components/Spinner";
 // util
 import { smallImage } from "../util";
 
-const GameDetail = () => {
+const GameDetail = ({ pathId }) => {
   const history = useHistory();
 
   // Exit detail
@@ -28,14 +28,14 @@ const GameDetail = () => {
   const { screen, game, loading } = useSelector((state) => state.detail);
   return (
     <CardShadow className="shadow" onClick={exitDetailHandler}>
-      <Detail>
+      <Detail layoutId={pathId}>
         {loading ? (
           <DetailSpinner />
         ) : (
           <>
             <Stats>
               <div className="rating">
-                <h3>{game.name}</h3>
+                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
               <Info>
@@ -48,7 +48,8 @@ const GameDetail = () => {
               </Info>
             </Stats>
             <Media>
-              <img
+              <motion.img
+                layoutId={`image ${pathId}`}
                 src={smallImage(game.background_image, 1280)}
                 alt={game.name_original}
               />
@@ -80,6 +81,7 @@ const CardShadow = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -98,6 +100,7 @@ const Detail = styled(motion.div)`
   background: white;
   position: absolute;
   left: 10%;
+  z-index: 10;
   color: black;
 
   @media (max-width: 48rem) {
