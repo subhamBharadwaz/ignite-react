@@ -8,7 +8,6 @@ import { fadeIn } from "../animations";
 
 // Redux and Routes
 import { fetchSearch } from "../actions/gamesAction";
-import { setAlert } from "../actions/alertAction";
 import { useDispatch } from "react-redux";
 
 const Nav = () => {
