@@ -5,7 +5,6 @@ import {
   upcomingGamesURL,
   searchGameURL,
 } from "../api";
-import { setAlert } from "./alertAction";
 
 // Action Creator
 
@@ -38,6 +37,6 @@ export const fetchSearch = (game_name) => async (dispatch) => {
       },
     });
   } catch (error) {
-    dispatch(setAlert(error.message, "danger"));
+    console.log(error, "error");
   }
 };
