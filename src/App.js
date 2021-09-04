@@ -1,7 +1,20 @@
+import React from "react";
+
+// Styles
+import GlobalStyles from "./styles/GlobalStyles";
+
+// Components and Pages
+import Home from "./pages/Home";
+
+import { Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello Ignite</h1>
+      <GlobalStyles />
+      <Route path={["/game/:id", "/"]}>
+        <Home />
+      </Route>
     </div>
   );
 }
